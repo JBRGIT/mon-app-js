@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "jrrrrr/mon-app-js"
+        DOCKER_IMAGE = "jrrrrrr/mon-app-js"
     }
 
     stages {
@@ -31,11 +31,9 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Tag Docker Image') {
             steps {
-                bat 'docker login -u jrrrrr'
                 bat 'docker tag %DOCKER_IMAGE% %DOCKER_IMAGE%:latest'
-                bat 'docker push %DOCKER_IMAGE%:latest'
             }
         }
 
